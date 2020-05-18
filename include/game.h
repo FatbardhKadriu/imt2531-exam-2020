@@ -30,6 +30,7 @@ class Game {
   private:
     int view = 0;
     Model player;
+    Model ghost;
     Level level;
     Shader shader;
     void setLighting();

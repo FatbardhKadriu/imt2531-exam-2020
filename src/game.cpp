@@ -5,7 +5,7 @@ void Game::init() {
 
   level.load();
   player.load("resources/models/duck.obj", "resources/textures/duck.jpg");
-
+  ghost.load("resources/models/ghost.obj", "resources/textures/ghost_texture_red.png");
 }
 
 void Game::update(float dt) {
@@ -17,7 +17,7 @@ void Game::processInput(float dt) {
   if (keys[GLFW_KEY_S]) camera.ProcessKeyboard(BACKWARD, dt);
   if (keys[GLFW_KEY_A]) camera.ProcessKeyboard(LEFT, dt);
   if (keys[GLFW_KEY_D]) camera.ProcessKeyboard(RIGHT, dt);
-  if (keys[GLFW_KEY_M]) view = (view + 1) % 3;
+  if (keys[GLFW_KEY_T]) view = (view + 1) % 3;
   if (keys[GLFW_KEY_LEFT_SHIFT]) {
     camera.ProcessKeyboard(RUN, dt);
   } else {
@@ -31,6 +31,7 @@ void Game::render() {
   setUpTransformations();
 
   level.draw(shader);
+  ghost.draw(glm::vec3(-1.0f, 0.0f, -3.0f), 1.0f, 90, shader);
   drawPlayer();
 }
 
