@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.14 FATAL_ERROR)
-project(exam VERSION 2.0.0)
+project(Exam VERSION 2.0.0)
 
 # Add dependencies
 add_subdirectory(external)
@@ -11,9 +11,32 @@ add_executable(${PROJECT_NAME})
 target_sources(
     ${PROJECT_NAME}
     PRIVATE
-    ${CMAKE_CURRENT_LIST_DIR}/include/shaderload.h
+    # ${CMAKE_CURRENT_LIST_DIR}/include/shader.h
+    # ${CMAKE_CURRENT_LIST_DIR}/include/camera.h
+    # ${CMAKE_CURRENT_LIST_DIR}/include/model.h
+    ${CMAKE_CURRENT_LIST_DIR}/include/level.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/level.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/include/game.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/game.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/rendering/model.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/include/texture.h
+    ${CMAKE_CURRENT_LIST_DIR}/include/util.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/rendering/texture.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/include/config.h
     ${CMAKE_CURRENT_LIST_DIR}/src/main.cpp
-   )
+
+    ${CMAKE_CURRENT_LIST_DIR}/src/imgui/imconfig.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/imgui/imgui.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/imgui/imgui_demo.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/imgui/imgui_draw.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/imgui/imgui.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/imgui/imgui_impl_glfw.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/imgui/imgui_impl_glfw.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/imgui/imgui_impl_opengl3.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/imgui/imgui_impl_opengl3.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/imgui/imgui_internal.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/imgui/imgui_widgets.cpp
+)
 
 # Set include directories
 target_include_directories(
@@ -31,6 +54,8 @@ target_link_libraries(
     gfx::gfx
     glm
     glfw
+    stbimage::stbimage
+    tinyobj::tinyobj
 )
 
 # Enable C++ 17

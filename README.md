@@ -1,1 +1,2 @@
-# imt2531-exam-2020
+# IMT2531-Exam
+Repository for the exam deliverables to IMT2531 - Graphics Programming
