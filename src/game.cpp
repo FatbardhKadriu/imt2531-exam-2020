@@ -42,7 +42,7 @@ void Game::render() {
 }
 
 void Game::setUpTransformations() {
-  auto projection = glm::perspective(glm::radians(50.f), 16.f / 9.f, 0.01f, 650.f);
+  auto projection = glm::perspective(glm::radians(camera.Zoom), 16.f / 9.f, 0.01f, 650.f);
   auto lookAt = glm::mat4(1.0f);
 
   switch (view) {
