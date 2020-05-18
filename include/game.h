@@ -12,6 +12,7 @@
 #include "model.h"
 #include "level.h"
 #include "camera.h"
+#include "deer.h"
 
 enum CameraState {
   FIRST_PERSON,
@@ -30,7 +31,7 @@ class Game {
   private:
     int view = 0;
     Model player;
-    Model ghost;
+    std::vector<Deer> deers;
     Level level;
     Shader shader;
     void setLighting();

@@ -5,7 +5,12 @@ void Game::init() {
 
   level.load();
   player.load("resources/models/duck.obj", "resources/textures/duck.jpg");
-  ghost.load("resources/models/ghost.obj", "resources/textures/ghost_texture_red.png");
+
+  for (int i = 0; i < 5; i++)
+  {
+    deers.push_back(Deer(i, "resources/models/deer.obj", "resources/textures/doe-body.png",
+                         glm::vec3(sin(i)*20.0f, 0.0f, 1 - i*i)));
+  }
 }
 
 void Game::update(float dt) {
@@ -29,9 +34,10 @@ void Game::render() {
   shader.reset();
   setLighting();
   setUpTransformations();
-
+  for(auto &deer: deers){
+    deer.draw(shader);
+  }
   level.draw(shader);
-  ghost.draw(glm::vec3(-1.0f, 0.0f, -3.0f), 1.0f, 90, shader);
   drawPlayer();
 }
 
