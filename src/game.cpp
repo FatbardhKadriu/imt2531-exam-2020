@@ -9,7 +9,7 @@ void Game::init() {
   for (int i = 0; i < 5; i++)
   {
     deers.push_back(Deer(i, "resources/models/deer.obj", "resources/textures/doe-body.png",
-                         glm::vec3(sin(i)*20.0f, -0.5f, 1 - i*i)));
+                         glm::vec3(sin(i)*15.0f, -0.5f, cos(i) * 10.0f)));
   }
 }
 

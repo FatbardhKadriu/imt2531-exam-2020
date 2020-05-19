@@ -153,3 +153,45 @@ void Model::draw(glm::vec3 position, float scale, float rotation, Shader shader)
   glBindVertexArray(0);
   glActiveTexture(GL_TEXTURE0);
 }
+void Model::draw2(glm::vec3 position, float scale, float rotation, Shader shader)
+{
+  auto model = glm::translate(glm::mat4(1.f), position);
+  model = glm::scale(model, glm::vec3(scale));
+  model = glm::rotate(model, glm::radians(rotation), glm::vec3(1.0f, 0.0f, 0.0f));
+  auto normal_matrix = glm::mat3(model);
+
+  shader.setMat4("model", model);
+  shader.setMat3("normal_matrix", normal_matrix);
+
+  glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
+  glBindVertexArray(m_vao);
+
+  m_texture.bind(tb_diffuse);
+  glDrawElements(GL_TRIANGLES, m_index_count, GL_UNSIGNED_INT, nullptr);
+
+  // set everything to default
+  glBindVertexArray(0);
+  glActiveTexture(GL_TEXTURE0);
+}
+void Model::draw3(glm::vec3 position, float scale, float rotation, Shader shader)
+{
+  auto model = glm::translate(glm::mat4(1.f), position);
+  model = glm::scale(model, glm::vec3(scale));
+  model = glm::rotate(model, glm::radians(rotation), glm::vec3(0.0f, 0.0f, 1.0f));
+  auto normal_matrix = glm::mat3(model);
+
+  shader.setMat4("model", model);
+  shader.setMat3("normal_matrix", normal_matrix);
+
+  glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
+  glBindVertexArray(m_vao);
+
+  m_texture.bind(tb_diffuse);
+  glDrawElements(GL_TRIANGLES, m_index_count, GL_UNSIGNED_INT, nullptr);
+
+  // set everything to default
+  glBindVertexArray(0);
+  glActiveTexture(GL_TEXTURE0);
+}

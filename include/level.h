@@ -20,6 +20,8 @@ public:
 
 private:
   Model cube;
+  Model lake;
+  Model wall;
   void drawFloor(Shader shader);
 };
 

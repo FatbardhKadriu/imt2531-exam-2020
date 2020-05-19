@@ -48,4 +48,6 @@ class Model {
   void load(const std::string& filepath_obj, const std::string& diffuse_path);
 
   void draw(glm::vec3 position, float scale, float rotation, Shader shader);
+  void draw2(glm::vec3 position, float scale, float rotation, Shader shader);
+  void draw3(glm::vec3 position, float scale, float rotation, Shader shader);
 };
