@@ -13,6 +13,7 @@
 #include "level.h"
 #include "camera.h"
 #include "deer.h"
+#include "tree.h"
 
 enum CameraState {
   FIRST_PERSON,
@@ -32,6 +33,9 @@ class Game {
     int view = 0;
     Model player;
     std::vector<Deer> deers;
+    std::vector<Tree> trees;
+    std::vector<Tree> scrubPines;
+    Model otherTree;
     Level level;
     Shader shader;
     void setLighting();

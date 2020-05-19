@@ -17,7 +17,9 @@ target_sources(
     ${CMAKE_CURRENT_LIST_DIR}/include/level.h
     ${CMAKE_CURRENT_LIST_DIR}/src/level.cpp
     ${CMAKE_CURRENT_LIST_DIR}/include/deer.h
-    ${CMAKE_CURRENT_LIST_DIR}/src/deer.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/deer.cpp    
+    ${CMAKE_CURRENT_LIST_DIR}/include/tree.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/tree.cpp
     ${CMAKE_CURRENT_LIST_DIR}/include/game.h
     ${CMAKE_CURRENT_LIST_DIR}/src/game.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/rendering/model.cpp

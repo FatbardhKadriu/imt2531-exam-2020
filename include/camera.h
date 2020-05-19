@@ -92,7 +92,7 @@ class Camera {
       MovementSpeed /= 1.7;
       running = false;
     }
-    Position.y = 0.0f;
+    // Position.y = 0.0f;
   }
 
   // Processes input received from a mouse input system. Expects the offset value in both the x and y direction.

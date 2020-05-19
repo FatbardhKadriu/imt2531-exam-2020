@@ -2,6 +2,7 @@
 
 void Game::init() {
   shader = Shader("../resources/shaders/vertex.vert", "../resources/shaders/fragment.frag");
+  otherTree.load("resources/models/scrubPine.obj", "resources/textures/LushPine.png");
 
   level.load();
   player.load("resources/models/duck.obj", "resources/textures/duck.jpg");
@@ -10,6 +11,27 @@ void Game::init() {
   {
     deers.push_back(Deer(i, "resources/models/deer.obj", "resources/textures/doe-body.png",
                          glm::vec3(sin(i)*(-15.0f), -0.5f, cos(i) * (10.0f))));
+  }
+  for(int i = 0; i < 20; i+=8)
+  {
+
+      trees.push_back(Tree(i, "resources/models/tree.obj", "resources/textures/tree.jpg",
+                           glm::vec3(10 + i, -.5f, -9)));
+    }
+   for(float i = 1.3; i < 20; i += 8)
+   {
+     scrubPines.push_back(Tree(i, "resources/models/scrubPine.obj", "resources/textures/LushPine.png",
+                               glm::vec3(10 + i, -.5f, -10)));
+   }     
+  for(int i = 3; i < 20; i+=8)
+  {
+    trees.push_back(Tree(i, "resources/models/tree.obj", "resources/textures/tree.jpg",
+                         glm::vec3(29, -.5f, -8 + i)));
+  }
+  for (float i = 4.5; i < 25; i += 8)
+  {
+    scrubPines.push_back(Tree(i, "resources/models/scrubPine.obj", "resources/textures/LushPine.png",
+                              glm::vec3(28, -.5f, -8 + i)));
   }
 }
 
@@ -37,7 +59,14 @@ void Game::render() {
   for(auto &deer: deers){
     deer.draw(shader);
   }
+  for(auto &tree: trees){
+    tree.draw(shader);
+  }
+  for(auto &scrubPine: scrubPines){
+    scrubPine.draw2(shader);
+  }
   level.draw(shader);
+  otherTree.draw(glm::vec3(0, -0.5, 0), 0.002, 0, 0, 0, shader);
   drawPlayer();
 }
 
