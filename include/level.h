@@ -12,11 +12,15 @@
 
 #include "model.h"
 
+class Level
+{
+public:
+  void load();
+  void draw(Shader shader);
 
-class Level {
-  public:
-    void load();
-    void draw(Shader shader);
+private:
+  Model cube;
+  void drawFloor(Shader shader);
 };
 
 #endif
