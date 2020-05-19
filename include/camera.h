@@ -68,7 +68,7 @@ class Camera {
 
   // Third person view
   glm::mat4 GetThirdPersonView() {
-    return glm::lookAt(glm::vec3(Position.x - Front.x, Position.y - Front.y, Position.z - Front.z), Position + Front, Up);
+    return glm::lookAt(glm::vec3(Position.x - Front.x, Position.y - Front.y + 1.5, Position.z - Front.z), Position + Front, Up);
   }
 
   // Birds eye view
@@ -92,7 +92,7 @@ class Camera {
       MovementSpeed /= 1.7;
       running = false;
     }
-    // Position.y = 0.0f;
+    Position.y = 0.0f;
   }
 
   // Processes input received from a mouse input system. Expects the offset value in both the x and y direction.

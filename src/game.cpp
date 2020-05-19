@@ -67,6 +67,6 @@ void Game::setLighting() {
 
 void Game::drawPlayer() {
   if (view != FIRST_PERSON) {
-    player.draw(camera.Position, 0.06, 90, shader);
+    player.draw4(glm::vec3(camera.Position.x , camera.Position.y-0.3, camera.Position.z), 0.01, 90, 180, 0, shader);
   }
 }
