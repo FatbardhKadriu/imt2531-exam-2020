@@ -85,7 +85,7 @@ class Camera {
     if (input == LEFT) Position -= Right * velocity;
     if (input == RIGHT) Position += Right * velocity;
     if (input == RUN && !running) {
-      MovementSpeed *= 1.7;
+      MovementSpeed *= 2.0;
       running = true;
     }
     if (input == STOP_RUN && running) {

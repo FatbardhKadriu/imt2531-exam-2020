@@ -21,7 +21,7 @@ private:
     glm::vec3 front;
     glm::vec3 crossProduct;
     // glm::vec3 color;
-    int rotation = 0;
+    int rotationY = 0;
     // float speed = 2.0;
     // float dotProduct;
     // void rotate();
