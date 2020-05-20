@@ -2,6 +2,7 @@
 
 void Game::init() {
   shader = Shader("../resources/shaders/vertex.vert", "../resources/shaders/fragment.frag");
+  duck.load("resources/models/duck.obj", "resources/textures/duck.jpg");
 
   level.load();
   player.load("resources/models/duck.obj", "resources/textures/duck.jpg");
@@ -64,6 +65,8 @@ void Game::render() {
     scrubPine.draw2(shader);
   }
   level.draw(shader);
+  duck.draw(glm::vec3(10, -0.55f, 7), 0.008, 90, 180, 0, shader);
+
   drawPlayer();
 }
 
@@ -190,6 +193,8 @@ void Game::setUpTransformations() {
     case BIRD_VIEW:
       lookAt = camera.Get2DView();
       break;
+    case LAKE_VIEW:
+      lookAt = camera.GetLakeView();
   }
 
   shader.setMat4("view", lookAt);
