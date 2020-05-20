@@ -46,7 +46,6 @@ GLFWwindow* initialize_glfw_and_gl(int width, int height)
 
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
     glfwSwapInterval(1);
-
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);  
@@ -70,7 +69,7 @@ void menu(Game &game, GLFWwindow *window)
   ImGui_ImplGlfw_NewFrame();
   ImGui::NewFrame();
   ImGui::Begin("Menu");
-  
+  // ImGui::DragFloat("Day/Night", &(game.dayc));
   if (ImGui::Button("Exit"))
   {
     glfwSetWindowShouldClose(window, GL_TRUE);

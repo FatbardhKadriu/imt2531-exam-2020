@@ -42,11 +42,11 @@ int main(int argc, char *argv[]) {
 
     game.processInput(deltaTime);
     game.update(deltaTime);
-    game.render();
+    game.render(currentFrame);
     menu(game, window);
 
     if (Config::devMode) draw_gui();
-
+    glClearColor(0.0, 0.0, 0.0, 1.0);
     glfwSwapBuffers(window);
     glfwPollEvents();
   }

@@ -51,9 +51,9 @@ void Game::processInput(float dt) {
   }
 }
 
-void Game::render() {
+void Game::render(float dt) {
   shader.reset();
-  setLighting();
+  setLighting(dt);
   setUpTransformations();
   for(auto &deer: deers){
     deer.draw(shader);
@@ -199,12 +199,12 @@ void Game::setUpTransformations() {
   shader.setMat4("projection", projection);
 }
 
-void Game::setLighting() {
-  shader.setDirLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.1f), glm::vec3(1.f), glm::vec3(0.5f));
+void Game::setLighting(float time) {
+  shader.setDirLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.1f), float(sin(time)) * glm::vec3(1.0f), glm::vec3(0.5f));
 }
 
 void Game::drawPlayer() {
   if (view != FIRST_PERSON) {
-    player.draw(glm::vec3(camera.Position.x , camera.Position.y-0.3, camera.Position.z), 0.008, 90, 180, 0, shader);
+    duck.draw(glm::vec3(camera.Position.x , camera.Position.y-0.3, camera.Position.z), 0.008, 90, 180, 0, shader);
   }
 }
