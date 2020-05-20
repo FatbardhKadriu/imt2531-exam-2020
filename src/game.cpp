@@ -36,6 +36,10 @@ void Game::init() {
 
 void Game::update(float dt) {
   checkCollision(dt);
+  for(auto &deer: deers)
+  {
+    deer.update(dt);
+  }
 }
 
 void Game::processInput(float dt) {
@@ -200,7 +204,8 @@ void Game::setUpTransformations() {
 }
 
 void Game::setLighting(float time) {
-  shader.setDirLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.1f), float(sin(time)) * glm::vec3(1.0f), glm::vec3(0.5f));
+  // shader.setDirLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.1f), float(sin(time)) * glm::vec3(1.0f), glm::vec3(0.5f));
+  shader.setDirLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.1f),  glm::vec3(1.0f), glm::vec3(0.5f));
 }
 
 void Game::drawPlayer() {

@@ -17,3 +17,10 @@ void Deer::draw(Shader shader)
     // shader.setGhostLight(this->position, this->color, id);
     model->draw(this->position, 0.15, 0, rotationY, 0, shader);
 }
+void Deer::update(float dt)
+{
+    float velocity = speed * dt;
+    nextPosition = glm::vec3(position.x, position.y, position.z -0.01);
+    front = glm::normalize(nextPosition - position);
+    position += front * velocity;
+}
