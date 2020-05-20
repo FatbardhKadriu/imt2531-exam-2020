@@ -23,7 +23,7 @@ void Level::draw(Shader shader) {
          hill.draw(glm::vec3(x, -0.8, 15), 1.0, -30, 0, 0, shader);
          hill.draw(glm::vec3(x, -0.8, -15), 1.0, 30, 0, 0, shader);
          hill.draw(glm::vec3(x, -0.8, 16), 2.0, -30, 0, 0, shader);
-         hill.draw(glm::vec3(x, -0.8, -16), 2.0, 30, 0, 0, shader);
+         hill.draw(glm::vec3(x, -0.8, -16), 2.0, 30,0, 0, shader);
      }
 
 }
@@ -36,20 +36,10 @@ void Level::drawFloor(Shader shader)
         for (int z = 0; z < 31; z++)
         {
             cube.draw(glm::vec3(x-30, -1.0, z-15), 1.0, 0, 0, 0, shader);
-            // lake.draw(glm::vec3(x,-1.0 ,z), 1.0, 0, 0, 0, shader);
             if(x > 40 && z > 8)
             {
                 lake.draw(glm::vec3(x-33, -.9, z-18), 1.0, 0, 0, 0, shader);
             }
-            // lake.draw(glm::vec3(x-4, -1.0f, z-14), 1.0, 0, shader);
-        }
-    }
-    //render lake
-    for (int x = 10; x <= 20; x++)
-    {
-        for (int z = 10; z >-11; z--)
-        {
-            lake.draw(glm::vec3(x, -1.0, z), 1.0, 0, 0, 0, shader);
         }
     }
   }

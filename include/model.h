@@ -39,6 +39,7 @@ class Model {
     glm::vec2 texcoord{};
   };
 
+  Vertex v;
   /**
    * The filepath to the obj file
    *
@@ -46,6 +47,10 @@ class Model {
    * @param diffuse_path The path to the diffuse texture
    */
   void load(const std::string& filepath_obj, const std::string& diffuse_path);
+
+  void setPosition(const glm::vec3 position) { v.position = position; }
+
+  glm::vec3 getPosition() const { return v.position; }
 
   void draw(glm::vec3 position, float scale, float rotationX, float rotationY, float rotationZ, Shader shader);
 };

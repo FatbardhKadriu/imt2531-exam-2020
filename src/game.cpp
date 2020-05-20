@@ -69,6 +69,7 @@ void Game::render() {
 
 void Game::checkCollision(float dt)
 {
+  //collision for deer
   for (auto &deer : deers)
   {
     if (deer.getPosition().z)
@@ -86,6 +87,7 @@ void Game::checkCollision(float dt)
       }
     }
   }
+  //collision for tree
   for (auto &tree : trees)
   {
     if (tree.getPosition().z)
@@ -103,6 +105,7 @@ void Game::checkCollision(float dt)
       }
     }
   }
+  //collision for other type of tree
   for (auto &scrubPine : scrubPines)
     {
       if (scrubPine.getPosition().z)
@@ -120,8 +123,59 @@ void Game::checkCollision(float dt)
         }
       }
     }
-  }
 
+    //collision for hill
+    for(int x = -30; x < 31; x++)
+    {
+      if((glm::distance(camera.Position, glm::vec3(x, 0.0f, 15.0f)) <= 0.5) || (glm::distance(camera.Position, glm::vec3(x, 0.0f, -15.0f)) <= 0.6))
+      {
+        if (keys[GLFW_KEY_W])
+          camera.ProcessKeyboard(BACKWARD, dt);
+        if (keys[GLFW_KEY_S])
+          camera.ProcessKeyboard(FORWARD, dt);
+        if (keys[GLFW_KEY_A])
+          camera.ProcessKeyboard(RIGHT, dt);
+        if (keys[GLFW_KEY_D])
+          camera.ProcessKeyboard(LEFT, dt);
+      }
+    }
+    //collision for hill
+    for (int z = -15; z < 16; z++)
+    {
+      if ((glm::distance(camera.Position, glm::vec3(30.0f, 0.0f, z)) <= 1.3) || (glm::distance(camera.Position, glm::vec3(-30.0f, 0.0f, z)) <= 1.3f))
+      {
+        if (keys[GLFW_KEY_W])
+          camera.ProcessKeyboard(BACKWARD, dt);
+        if (keys[GLFW_KEY_S])
+          camera.ProcessKeyboard(FORWARD, dt);
+        if (keys[GLFW_KEY_A])
+          camera.ProcessKeyboard(RIGHT, dt);
+        if (keys[GLFW_KEY_D])
+          camera.ProcessKeyboard(LEFT, dt);
+      }
+    }
+
+    //collision for lake
+    for (int x = 0; x < 61; x++)
+    {
+      for (int z = 0; z < 31; z++)
+      {
+        if(x > 40 && z > 8){
+        if((glm::distance(camera.Position, glm::vec3(x-33, 0.1f, z-18)) <= 0.7))
+          {
+            if (keys[GLFW_KEY_W])
+              camera.ProcessKeyboard(BACKWARD, dt);
+            if (keys[GLFW_KEY_S])
+              camera.ProcessKeyboard(FORWARD, dt);
+            if (keys[GLFW_KEY_A])
+              camera.ProcessKeyboard(RIGHT, dt);
+            if (keys[GLFW_KEY_D])
+              camera.ProcessKeyboard(LEFT, dt);
+          }
+        }
+      }
+    }
+  }
 void Game::setUpTransformations() {
   auto projection = glm::perspective(glm::radians(camera.Zoom), 16.f / 9.f, 0.01f, 650.f);
   auto lookAt = glm::mat4(1.0f);
