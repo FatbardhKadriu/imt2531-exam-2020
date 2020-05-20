@@ -35,12 +35,13 @@ class Game {
     std::vector<Deer> deers;
     std::vector<Tree> trees;
     std::vector<Tree> scrubPines;
-    Model otherTree;
+    Model hill;
     Level level;
     Shader shader;
     void setLighting();
     void setUpTransformations();
     void drawPlayer();
+    void checkCollision(float dt);
 };
 
 #endif

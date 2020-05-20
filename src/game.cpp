@@ -2,11 +2,9 @@
 
 void Game::init() {
   shader = Shader("../resources/shaders/vertex.vert", "../resources/shaders/fragment.frag");
-  otherTree.load("resources/models/scrubPine.obj", "resources/textures/LushPine.png");
 
   level.load();
   player.load("resources/models/duck.obj", "resources/textures/duck.jpg");
-
   for (int i = 0; i < 4; i++)
   {
     deers.push_back(Deer(i, "resources/models/deer.obj", "resources/textures/doe-body.png",
@@ -36,7 +34,7 @@ void Game::init() {
 }
 
 void Game::update(float dt) {
-  
+  checkCollision(dt);
 }
 
 void Game::processInput(float dt) {
@@ -66,9 +64,63 @@ void Game::render() {
     scrubPine.draw2(shader);
   }
   level.draw(shader);
-  otherTree.draw(glm::vec3(0, -0.5, 0), 0.002, 0, 0, 0, shader);
   drawPlayer();
 }
+
+void Game::checkCollision(float dt)
+{
+  for (auto &deer : deers)
+  {
+    if (deer.getPosition().z)
+    {
+      if (glm::distance(camera.Position, glm::vec3(deer.getPosition().x, 0.0f, deer.getPosition().z)) <= 0.8)
+      {
+        if (keys[GLFW_KEY_W])
+          camera.ProcessKeyboard(BACKWARD, dt);
+        if (keys[GLFW_KEY_S])
+          camera.ProcessKeyboard(FORWARD, dt);
+        if (keys[GLFW_KEY_A])
+          camera.ProcessKeyboard(RIGHT, dt);
+        if (keys[GLFW_KEY_D])
+          camera.ProcessKeyboard(LEFT, dt);
+      }
+    }
+  }
+  for (auto &tree : trees)
+  {
+    if (tree.getPosition().z)
+    {
+      if (glm::distance(camera.Position, glm::vec3(tree.getPosition().x, 0.0f, tree.getPosition().z)) <= 1.8)
+      {
+        if (keys[GLFW_KEY_W])
+          camera.ProcessKeyboard(BACKWARD, dt);
+        if (keys[GLFW_KEY_S])
+          camera.ProcessKeyboard(FORWARD, dt);
+        if (keys[GLFW_KEY_A])
+          camera.ProcessKeyboard(RIGHT, dt);
+        if (keys[GLFW_KEY_D])
+          camera.ProcessKeyboard(LEFT, dt);
+      }
+    }
+  }
+  for (auto &scrubPine : scrubPines)
+    {
+      if (scrubPine.getPosition().z)
+      {
+        if (glm::distance(camera.Position, glm::vec3(scrubPine.getPosition().x, 0.0f, scrubPine.getPosition().z)) <= 0.8)
+        {
+          if (keys[GLFW_KEY_W])
+            camera.ProcessKeyboard(BACKWARD, dt);
+          if (keys[GLFW_KEY_S])
+            camera.ProcessKeyboard(FORWARD, dt);
+          if (keys[GLFW_KEY_A])
+            camera.ProcessKeyboard(RIGHT, dt);
+          if (keys[GLFW_KEY_D])
+            camera.ProcessKeyboard(LEFT, dt);
+        }
+      }
+    }
+  }
 
 void Game::setUpTransformations() {
   auto projection = glm::perspective(glm::radians(camera.Zoom), 16.f / 9.f, 0.01f, 650.f);

@@ -22,6 +22,7 @@ private:
   Model cube;
   Model lake;
   Model wall;
+  Model hill;
   void drawFloor(Shader shader);
 };
 
