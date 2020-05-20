@@ -43,6 +43,7 @@ int main(int argc, char *argv[]) {
     game.processInput(deltaTime);
     game.update(deltaTime);
     game.render();
+    menu(game, window);
 
     if (Config::devMode) draw_gui();
 

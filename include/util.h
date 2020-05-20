@@ -10,6 +10,7 @@
 #include "config.h"
 #include "game.h"
 
+
 GLFWwindow* initialize_glfw_and_gl(int width, int height)
 { // Initialise GLFW
     if (!glfwInit())
@@ -63,6 +64,21 @@ void initialize_gui(GLFWwindow* window) {
   ImGui_ImplOpenGL3_Init("#version 430 core");
 }
 
+void menu(Game &game, GLFWwindow *window)
+{
+  ImGui_ImplOpenGL3_NewFrame();
+  ImGui_ImplGlfw_NewFrame();
+  ImGui::NewFrame();
+  ImGui::Begin("Menu");
+  
+  if (ImGui::Button("Exit"))
+  {
+    glfwSetWindowShouldClose(window, GL_TRUE);
+  }
+  ImGui::End();
+  ImGui::Render();
+  ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+}
 void clean_up(GLFWwindow* window) {
   ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();

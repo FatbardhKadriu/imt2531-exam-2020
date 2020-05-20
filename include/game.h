@@ -36,6 +36,7 @@ class Game {
     std::vector<Tree> trees;
     std::vector<Tree> scrubPines;
     Model hill;
+    Model duck;
     Level level;
     Shader shader;
     void setLighting();

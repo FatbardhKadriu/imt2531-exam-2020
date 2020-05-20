@@ -193,8 +193,6 @@ void Game::setUpTransformations() {
     case BIRD_VIEW:
       lookAt = camera.Get2DView();
       break;
-    case LAKE_VIEW:
-      lookAt = camera.GetLakeView();
   }
 
   shader.setMat4("view", lookAt);
