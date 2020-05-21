@@ -19,8 +19,13 @@ void Deer::draw(Shader shader)
 }
 void Deer::update(float dt)
 {
-    float velocity = speed * dt;
+    float velocity = 2.0 * dt;
     nextPosition = glm::vec3(position.x, position.y, position.z -0.01);
     front = glm::normalize(nextPosition - position);
-    position += front * velocity;
+    if(position.z > -14)
+    {
+        position += front * velocity;
+    }else{
+        position.z = -14;
+    }
 }
