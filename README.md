@@ -58,8 +58,9 @@ Space - Make a selection in the menu
  * Eagle
  * Duck
 
- Duck, eagle and deer moves randomly.
-
+ Duck and eagle moves randomly.
+ Deer moves one direction.
+ 
  * Instead of heightmaps terrain, it's generated a flat terrain.
  * The scene is illuminated using directional light.
  * Skybox is implemented with clouds.
