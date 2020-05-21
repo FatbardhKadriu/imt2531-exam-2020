@@ -34,12 +34,15 @@ void Game::init() {
   }
 }
 
-void Game::update(float dt) {
+void Game::update(float dt, bool let_deer_move) {
   checkCollision(dt);
-  for(auto &deer: deers)
-  {
-    deer.update(dt);
+  if(let_deer_move){
+    for (auto &deer : deers)
+    {
+      deer.update(dt);
+    }
   }
+
 }
 
 void Game::processInput(float dt) {
