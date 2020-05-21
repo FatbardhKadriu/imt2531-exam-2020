@@ -73,7 +73,7 @@ void Game::render(float dt, float speedCycle, bool enableDayNight) {
   }
   level.draw(shader);
   duck.draw(glm::vec3(10, -0.55f, 7), 0.008, 90, 180, 0, shader);
-  eagle.draw(glm::vec3(1.0f + cos(dt) * 2.0f, sin(dt / 2) * 1.0f + 7, 1.0f + sin(dt) * 2.0f), .03, 60, 0, 0, shader);
+  eagle.draw(glm::vec3(3.0f + cos(dt) * 3.0f, sin(dt / 2) * 1.0f + 7, 1.0f + sin(dt) * 4.0f), .03, 60, 0, 0, shader);
   drawPlayer();
 }
 
