@@ -16,6 +16,7 @@ void menu(Game &game, GLFWwindow *window);
 
 Game game;
 bool show_main_menu;
+bool enable_day_night;
 // timing
 float deltaTime = 0.0f;  // time between current frame and last frame
 float lastFrame = 0.0f;
@@ -46,12 +47,11 @@ int main(int argc, char *argv[]) {
 
     game.processInput(deltaTime);
     game.update(deltaTime);
-    game.render(currentFrame, dayNightCycle);
+    game.render(currentFrame, dayNightCycle, enable_day_night);
     if (Config::devMode)
       draw_gui();
     menu(game, window);
 
-    glClearColor(0.0, 0.0, 0.0, 1.0);
     glfwSwapBuffers(window);
     glfwPollEvents();
   }
@@ -82,25 +82,15 @@ void menu(Game &game, GLFWwindow *window)
   ImGui_ImplOpenGL3_NewFrame();
   ImGui_ImplGlfw_NewFrame();
   ImGui::NewFrame();
-  {
-    static int counter = 0;
 
-    ImGui::Begin("Menu"); // Create a window called "Menu!" and append into it.
-    ImGui::Checkbox("Show main menu", &show_main_menu); // Edit bools storing our window open/close state
+    ImGui::Begin("Main Menu");
+    ImGui::SliderFloat("Speed cycle", &dayNightCycle, 0.0f, 1.68);
+    ImGui::Checkbox("Enable dynamic Day/Night", &enable_day_night);
     if (ImGui::Button("Exit"))
     {
       glfwSetWindowShouldClose(window, GL_TRUE);
     }
     ImGui::End();
-  }
-  if(show_main_menu)
-  {
-    ImGui::Begin("Main Menu");
-    ImGui::SliderFloat("Day/Night cycle", &dayNightCycle, 0.0f, 1.68);
-    
-    ImGui::End();
-  }
-
   ImGui::Render();
   ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }

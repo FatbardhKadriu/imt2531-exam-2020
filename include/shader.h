@@ -189,8 +189,8 @@ class Shader {
 
   void reset() {
     this->use();
-    // glClearColor(0.06f, 0.06f, 0.3f, 1.0f);
-    glClearColor(0.52f, 0.8, 0.91, 1.0);
+    glClearColor(0.3f, 0.5f, 0.6f, 1.0f);
+    // glClearColor(0.52f, 0.8, 0.91, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   }
 

@@ -28,7 +28,7 @@ class Game {
     void init();
     void update(float dt);
     void processInput(float dt);
-    void render(float time, float speedCycle);
+    void render(float time, float speedCycle,bool enableDayNight);
   private:
     int view = 0;
     Model player;
@@ -39,7 +39,7 @@ class Game {
     Model duck;
     Level level;
     Shader shader;
-    void setLighting(float time, float speedValue);
+    void setLighting(float time, float speedValue, bool enableDayNight);
     void setUpTransformations();
     void drawPlayer();
     void checkCollision(float dt);

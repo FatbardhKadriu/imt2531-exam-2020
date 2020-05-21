@@ -55,9 +55,9 @@ void Game::processInput(float dt) {
   }
 }
 
-void Game::render(float dt, float speedCycle) {
+void Game::render(float dt, float speedCycle, bool enableDayNight) {
   shader.reset();
-  setLighting(dt, speedCycle);
+  setLighting(dt, speedCycle, enableDayNight);
   setUpTransformations();
   for(auto &deer: deers){
     deer.draw(shader);
@@ -203,8 +203,12 @@ void Game::setUpTransformations() {
   shader.setMat4("projection", projection);
 }
 
-void Game::setLighting(float time, float speedCycle) {
-  shader.setDirLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.1f), float(cos(speedCycle)) /** float(sin(time))*/ * glm::vec3(1.0f), glm::vec3(0.5f));
+void Game::setLighting(float time, float speedCycle, bool enableDayNight) {
+  if(enableDayNight)
+  shader.setDirLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.1f), float(cos(speedCycle)) * float(sin(time)) * glm::vec3(1.0f), glm::vec3(0.5f));
+  else
+    shader.setDirLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.1f), float(cos(speedCycle)) /** float(sin(time))*/ * glm::vec3(1.0f), glm::vec3(0.5f));
+  
   // shader.setDirLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.1f),  glm::vec3(1.0f), glm::vec3(0.5f));
 }
 
