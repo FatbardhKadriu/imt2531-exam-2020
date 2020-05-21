@@ -5,7 +5,7 @@ void Game::init() {
   duck.load("resources/models/duck.obj", "resources/textures/duck.jpg");
 
   level.load();
-  player.load("resources/models/duck.obj", "resources/textures/duck.jpg");
+  player.load("resources/models/man.obj", "resources/textures/white.png");
   for (int i = 0; i < 4; i++)
   {
     deers.push_back(Deer(i, "resources/models/deer.obj", "resources/textures/doe-body.png",
@@ -217,6 +217,7 @@ void Game::setLighting(float time, float speedCycle, bool enableDayNight) {
 
 void Game::drawPlayer() {
   if (view != FIRST_PERSON) {
-    duck.draw(glm::vec3(camera.Position.x , camera.Position.y-0.3, camera.Position.z), 0.008, 90, 180, 0, shader);
+    player.draw(glm::vec3(camera.Position.x , camera.Position.y+0.1, camera.Position.z), 0.4, 0, 180, 0, shader);
+    // player.draw(glm::vec3(0, 0.1, 0), 0.4, 0, 180, 0, shader);
   }
 }
