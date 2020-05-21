@@ -64,10 +64,10 @@ Space - Make a selection in the menu
  * The scene is illuminated using directional light.
  * Skybox is implemented with clouds.
  * Provide a free-moving camera whose orientation is controlled by the mouse and/or WASD keys.
- * Allow switching between global camera (“bird view”), 3 rd person and 1 st person perspectives using the toggle button ‘t’.
+ * Allow switching between global camera (“bird view”), 3rd person and 1st person perspectives using the toggle button ‘t’.
  * Allow dynamic movement of sunlight to produce day/night cycle.
  * Allow the user to control the speed of day/night cycle using GUI
- * Allow the user to enable/disable day/night cycle
+ * Allow the user to enable/disable dynamic day/night cycle
  * Allow the user to allow or not deer to move
  * Collision detection is implemented for all objects
 
