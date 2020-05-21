@@ -12,11 +12,15 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xPos, double yPos);
 void scroll_callback(GLFWwindow *window, double xoffset, double yoffset);
+void menu(Game &game, GLFWwindow *window);
 
 Game game;
+bool show_main_menu;
 // timing
 float deltaTime = 0.0f;  // time between current frame and last frame
 float lastFrame = 0.0f;
+
+static float dayNightCycle = 0.0f;
 
 int main(int argc, char *argv[]) {
   if (argc > 1 && (std::string)argv[1] == "dev") {
@@ -42,10 +46,11 @@ int main(int argc, char *argv[]) {
 
     game.processInput(deltaTime);
     game.update(deltaTime);
-    game.render(currentFrame);
+    game.render(currentFrame, dayNightCycle);
+    if (Config::devMode)
+      draw_gui();
     menu(game, window);
 
-    if (Config::devMode) draw_gui();
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glfwSwapBuffers(window);
     glfwPollEvents();
@@ -71,4 +76,31 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) { glVi
 void scroll_callback(GLFWwindow *window, double xoffset, double yoffset)
 {
   game.camera.ProcessMouseScroll(yoffset);
+}
+void menu(Game &game, GLFWwindow *window)
+{
+  ImGui_ImplOpenGL3_NewFrame();
+  ImGui_ImplGlfw_NewFrame();
+  ImGui::NewFrame();
+  {
+    static int counter = 0;
+
+    ImGui::Begin("Menu"); // Create a window called "Menu!" and append into it.
+    ImGui::Checkbox("Show main menu", &show_main_menu); // Edit bools storing our window open/close state
+    if (ImGui::Button("Exit"))
+    {
+      glfwSetWindowShouldClose(window, GL_TRUE);
+    }
+    ImGui::End();
+  }
+  if(show_main_menu)
+  {
+    ImGui::Begin("Main Menu");
+    ImGui::SliderFloat("Day/Night cycle", &dayNightCycle, 0.0f, 1.68);
+    
+    ImGui::End();
+  }
+
+  ImGui::Render();
+  ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
