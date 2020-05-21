@@ -72,7 +72,7 @@ void Game::render(float dt, float speedCycle, bool enableDayNight) {
     scrubPine.draw2(shader);
   }
   level.draw(shader);
-  duck.draw(glm::vec3(10, -0.55f, 7), 0.008, 90, 180, 0, shader);
+  duck.draw(glm::vec3(13.0f + cos(dt/3) * 1.0f, -0.55f, 5*sin(dt/3)-2), .008, 90, 180, 0, shader);
   eagle.draw(glm::vec3(3.0f + cos(dt) * 3.0f, sin(dt / 2) * 1.0f + 7, 1.0f + sin(dt) * 4.0f), .03, 60, 0, 0, shader);
   drawPlayer();
 }
@@ -134,7 +134,7 @@ void Game::checkCollision(float dt)
       }
     }
 
-    //collision for hill
+    //collision for walls(front and back)
     for(int x = -30; x < 31; x++)
     {
       if((glm::distance(camera.Position, glm::vec3(x, 0.0f, 15.0f)) <= 0.5) || (glm::distance(camera.Position, glm::vec3(x, 0.0f, -15.0f)) <= 0.6))
@@ -149,7 +149,7 @@ void Game::checkCollision(float dt)
           camera.ProcessKeyboard(LEFT, dt);
       }
     }
-    //collision for hill
+    //collision for walls(left and right)
     for (int z = -15; z < 16; z++)
     {
       if ((glm::distance(camera.Position, glm::vec3(30.0f, 0.0f, z)) <= 1.3) || (glm::distance(camera.Position, glm::vec3(-30.0f, 0.0f, z)) <= 1.3f))
@@ -211,13 +211,10 @@ void Game::setLighting(float time, float speedCycle, bool enableDayNight) {
   shader.setDirLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.1f), float(cos(speedCycle)) * float(sin(time)) * glm::vec3(1.0f), glm::vec3(0.5f));
   else
     shader.setDirLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.1f), float(cos(speedCycle)) /** float(sin(time))*/ * glm::vec3(1.0f), glm::vec3(0.5f));
-  
-  // shader.setDirLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.1f),  glm::vec3(1.0f), glm::vec3(0.5f));
 }
 
 void Game::drawPlayer() {
   if (view != FIRST_PERSON) {
     player.draw(glm::vec3(camera.Position.x , camera.Position.y+0.1, camera.Position.z), 0.4, 0, 180, 0, shader);
-    // player.draw(glm::vec3(0, 0.1, 0), 0.4, 0, 180, 0, shader);
   }
 }

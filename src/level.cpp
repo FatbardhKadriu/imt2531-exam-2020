@@ -37,6 +37,7 @@ void Level::drawFloor(Shader shader)
             cube.draw(glm::vec3(x-30, -1.0, z-15), 1.0, 0, 0, 0, shader);
             if(x > 40 && z > 8)
             {
+                //render lake
                 lake.draw(glm::vec3(x-33, -.9, z-18), 1.0, 0, 0, 0, shader);
             }
         }

@@ -14,7 +14,7 @@ mkdir build
 cd build
 cmake ..
 make
-./Pacman3D
+./Exam
 ```
 
 On windows:
@@ -25,7 +25,7 @@ cmake ..
 cmake --build .
 cd ..
 cd out/build/x64-Debug
-Pacman3D.exe
+Exam.exe
 ```
 
 ## Controls

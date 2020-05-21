@@ -71,8 +71,6 @@ int main() {
     game.processInput(deltaTime);
     game.update(deltaTime, allow_deer_move);
     game.render(currentFrame, dayNightCycle, enable_day_night);
-    if (Config::devMode)
-      draw_gui();
     menu(game, window);
 
 
