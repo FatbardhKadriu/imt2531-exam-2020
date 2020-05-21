@@ -37,6 +37,7 @@ class Game {
     std::vector<Tree> scrubPines;
     Model hill;
     Model duck;
+    Model eagle;
     Level level;
     Shader shader;
     void setLighting(float time, float speedValue, bool enableDayNight);

@@ -3,7 +3,7 @@
 void Game::init() {
   shader = Shader("../resources/shaders/vertex.vert", "../resources/shaders/fragment.frag");
   duck.load("resources/models/duck.obj", "resources/textures/duck.jpg");
-
+  eagle.load("resources/models/Eagle02.obj", "resources/textures/Eagle02.tga");
   level.load();
   player.load("resources/models/man.obj", "resources/textures/white.png");
   for (int i = 0; i < 4; i++)
@@ -73,7 +73,7 @@ void Game::render(float dt, float speedCycle, bool enableDayNight) {
   }
   level.draw(shader);
   duck.draw(glm::vec3(10, -0.55f, 7), 0.008, 90, 180, 0, shader);
-
+  eagle.draw(glm::vec3(camera.Position.x+5, camera.Position.y + 7, camera.Position.z-4 ), .03, 45, 0, 0, shader);
   drawPlayer();
 }
 
