@@ -36,7 +36,7 @@ GLFWwindow* initialize_glfw_and_gl(int width, int height)
     }
 
     glfwMakeContextCurrent(window);
-    // glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     // Initialize Glad
     if (!gladLoadGL())

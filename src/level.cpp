@@ -12,18 +12,18 @@ void Level::draw(Shader shader) {
      //left and right wall
      for (int z = 16; z > -17; z--)
      {
-         hill.draw(glm::vec3(30, -0.9, z), 1.0, 0, 0, 30, shader);
-         hill.draw(glm::vec3(-30, -0.9, z), 1.0, 0, 0, -30, shader);
-         hill.draw(glm::vec3(30, -0.9, z), 2.0, 0, 0, 30, shader);
-         hill.draw(glm::vec3(-30, -0.9, z), 2.0, 0, 0, -30, shader);
+         hill.draw(glm::vec3(30, 0.0, z), 1.0, 0, 0, 0, shader);
+         hill.draw(glm::vec3(-30, 0.0, z), 1.0, 0, 0, 0, shader);
+        //  hill.draw(glm::vec3(30, -0.9, z), 2.0, 0, 0, 30, shader);
+        //  hill.draw(glm::vec3(-30, -0.9, z), 2.0, 0, 0, -30, shader);
      }
      //front and back wall
      for (int x = 30; x > -31; x--)
      {
-         hill.draw(glm::vec3(x, -0.8, 15), 1.0, -30, 0, 0, shader);
-         hill.draw(glm::vec3(x, -0.8, -15), 1.0, 30, 0, 0, shader);
-         hill.draw(glm::vec3(x, -0.8, 16), 2.0, -30, 0, 0, shader);
-         hill.draw(glm::vec3(x, -0.8, -16), 2.0, 30,0, 0, shader);
+         hill.draw(glm::vec3(x, 0.0, 15), 1.0, 0, 0, 0, shader);
+         hill.draw(glm::vec3(x, 0.0, -15), 1.0, 0, 0, 0, shader);
+        //  hill.draw(glm::vec3(x, -0.8, 16), 2.0, -30, 0, 0, shader);
+        //  hill.draw(glm::vec3(x, -0.8, -16), 2.0, 30,0, 0, shader);
      }
 
 }
